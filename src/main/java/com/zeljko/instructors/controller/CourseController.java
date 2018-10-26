@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/course")
@@ -70,13 +73,29 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("courseAddForm") Course course) {
+    public ModelAndView save(@Valid @ModelAttribute("courseAddForm") Course course,
+    		BindingResult theBindingResult) {
+    	
+    	if (theBindingResult.hasErrors()) {
+    		 ModelAndView model = new ModelAndView();
+    	
+
+    	        List<Instructor> instructorList = instructorService.getAllInstructors();
+
+    	        model.addObject("instructorList", instructorList);
+
+    	        model.addObject("courseAddForm", course);
+    	        model.setViewName("course_add_form");
+
+    	        return model;
+		}
 
         logger.info("Creating Course : {}", course);
 
         if (courseService.isCourseExist(course)) {
             logger.error("Unable to create. A Course with title {} already exist", course.getTitle());
             ModelAndView model = new ModelAndView();
+            model.addObject("course", course);
             model.setViewName("course_exists_error");
             return model;
         }
@@ -94,7 +113,8 @@ public class CourseController {
 
     @RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable("id") int id) {
-
+    	
+    	courseService.deleteCourse(id);
         return new ModelAndView("redirect:/course/list");
     }
 

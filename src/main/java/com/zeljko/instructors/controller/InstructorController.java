@@ -4,6 +4,7 @@ import com.zeljko.instructors.entities.Instructor;
 import com.zeljko.instructors.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,71 +13,84 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(value = "/instructor")
 public class InstructorController {
 
-    @Autowired
-    InstructorService instructorService;
-   /* @Autowired
-    InstructorDetailService instructorDetailService;
-*/
+	@Autowired
+	InstructorService instructorService;
+	/*
+	 * @Autowired InstructorDetailService instructorDetailService;
+	 */
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list() {
-        ModelAndView model = new ModelAndView("instructor_list");
-        List<Instructor> instructorList = instructorService.getAllInstructors();
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView model = new ModelAndView("instructor_list");
+		List<Instructor> instructorList = instructorService.getAllInstructors();
 
-        model.addObject("instructorList", instructorList);
+		model.addObject("instructorList", instructorList);
 
-        return model;
-    }
+		return model;
+	}
 
-    @RequestMapping(value = "/addInstructor/", method = RequestMethod.GET)
-    public ModelAndView addInstructor() {
-        ModelAndView model = new ModelAndView();
+	@RequestMapping(value = "/addInstructor/", method = RequestMethod.GET)
+	public ModelAndView addInstructor() {
+		ModelAndView model = new ModelAndView();
 
-        Instructor instructor = new Instructor();
+		Instructor instructor = new Instructor();
 
-      /*  List<InstructorDetail> instructorDetailList = instructorDetailService.getAllInstructorDetails();
+		/*
+		 * List<InstructorDetail> instructorDetailList =
+		 * instructorDetailService.getAllInstructorDetails();
+		 * 
+		 * model.addObject("instructorDetailList", instructorDetailList);
+		 */
+		model.addObject("instructorForm", instructor);
+		model.setViewName("instructor_form");
 
-        model.addObject("instructorDetailList", instructorDetailList);
-*/
-        model.addObject("instructorForm", instructor);
-        model.setViewName("instructor_form");
+		return model;
+	}
 
-        return model;
-    }
+	@RequestMapping(value = "/updateInstructor/{id}", method = RequestMethod.GET)
+	public ModelAndView editInstructor(@PathVariable int id) {
+		ModelAndView model = new ModelAndView();
 
-    @RequestMapping(value = "/updateInstructor/{id}", method = RequestMethod.GET)
-    public ModelAndView editInstructor(@PathVariable int id) {
-        ModelAndView model = new ModelAndView();
+		Instructor instructor = instructorService.getInstructorById(id);
 
-        Instructor instructor = instructorService.getInstructorById(id);
+		/*
+		 * List<InstructorDetail> instructorDetailList =
+		 * instructorDetailService.getAllInstructorDetails();
+		 * 
+		 * model.addObject("instructorDetailList", instructorDetailList);
+		 */
+		model.addObject("instructorForm", instructor);
+		model.setViewName("instructor_form");
 
-      /*  List<InstructorDetail> instructorDetailList = instructorDetailService.getAllInstructorDetails();
+		return model;
+	}
 
-        model.addObject("instructorDetailList", instructorDetailList);
-*/
-        model.addObject("instructorForm", instructor);
-        model.setViewName("instructor_form");
+	@RequestMapping(value = "/saveInstructor", method = RequestMethod.POST)
+	public ModelAndView save(@Valid @ModelAttribute("instructorForm") Instructor instructor,
+			BindingResult theBindingResult) {
 
-        return model;
-    }
+		if (theBindingResult.hasErrors()) {
+			return new ModelAndView("instructor_form");
+		}
 
-    @RequestMapping(value = "/saveInstructor", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("instructorForm") Instructor instructor) {
-        instructorService.saveOrUpdate(instructor);
+		instructorService.saveOrUpdate(instructor);
 
-        return new ModelAndView("redirect:/instructor/list");
-    }
+		return new ModelAndView("redirect:/instructor/list");
 
-    @RequestMapping(value = "/deleteInstructor/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable("id") int id) {
+	}
 
-        instructorService.deleteInstructor(id);
+	@RequestMapping(value = "/deleteInstructor/{id}", method = RequestMethod.GET)
+	public ModelAndView delete(@PathVariable("id") int id) {
 
-        return new ModelAndView("redirect:/instructor/list");
-    }
+		instructorService.deleteInstructor(id);
+
+		return new ModelAndView("redirect:/instructor/list");
+	}
 
 }

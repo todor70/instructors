@@ -8,15 +8,10 @@
 <html>
 <head>
 
-   <%-- <style>
-        input {
-            width: 250px;
-            border: 1px solid #667;
-            border-radius: 5px;
-            padding: 4px;
-            font-size: 16px;
-        }
-    </style>--%>
+  <style>
+.error {color:red}
+</style>
+
     <!-- Reference Bootstrap files -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,6 +32,7 @@
         <div class="form-group" style="width: 250px">
             <label>Title</label>
             <form:input path="title" cssClass="form-control" id="title"/>
+            <form:errors path="title" cssClass="error" />
         </div>
         <div class="form-group" style="width: 250px">
             <label>Start</label>

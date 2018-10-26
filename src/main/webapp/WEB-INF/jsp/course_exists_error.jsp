@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,7 +23,8 @@
 
 <body>
 
-<h2>Course already exists!!!</h2>
+<h2>Course ${course.title } already exists!!!</h2>
+
 
 <hr>
 

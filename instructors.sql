@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `users_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `enabled` BIT(1) NULL DEFAULT NULL,
+  `enabled` BIT(1) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`users_id`)
@@ -21,8 +21,8 @@ DROP TABLE IF EXISTS `authorities`;
 
 CREATE TABLE `authorities` (
   `authorities_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `authority` VARCHAR(255) NULL DEFAULT NULL,
-  `username` VARCHAR(255) NULL DEFAULT NULL,
+  `authority` VARCHAR(255) NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`authorities_id`),
   INDEX `FKhjuy9y4fd8v5m3klig05ktofg` (`username` ASC) VISIBLE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -35,12 +35,12 @@ DROP TABLE IF EXISTS `instructor`;
 
 CREATE TABLE `instructor` (
   `instructor_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
   `day_of_birth` DATE NULL DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `address` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
   PRIMARY KEY (`instructor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `course`;
 
 CREATE TABLE `course` (
   `course_id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(128) DEFAULT NULL,
+  `title` varchar(128) NOT NULL,
   `start` DATE NULL DEFAULT NULL,
   `end` DATE NULL DEFAULT NULL,
   `instructor_id` int(11) DEFAULT NULL,

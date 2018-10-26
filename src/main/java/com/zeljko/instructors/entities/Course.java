@@ -3,6 +3,9 @@ package com.zeljko.instructors.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 @Entity
@@ -15,6 +18,8 @@ public class Course {
 	private int courseID;
 	
 	@Column(name="title")
+	@NotNull(message="is required")
+	@Size(min=1, message="is required")
 	private String title;
 
 	@Column(name = "start")

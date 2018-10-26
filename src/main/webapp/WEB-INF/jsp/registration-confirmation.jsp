@@ -21,7 +21,7 @@
 <body>
 
 	<h2>User registered successfully!</h2>
-
+	
 	<hr>
 	
 	<a href="${pageContext.request.contextPath}/users/list" class="btn btn-primary">Back to User List</a>

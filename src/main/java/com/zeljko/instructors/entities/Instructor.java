@@ -31,33 +31,33 @@ public class Instructor {
 	@Column(name="instructor_ID")
 	private int instructorID;
 
-	@NotNull(message="is required")
-	@Size(min=1, message="is required")
 	@Column(name="first_name")
-	private String firstName;
-
 	@NotNull(message="is required")
 	@Size(min=1, message="is required")
+	private String firstName;
+	
 	@Column(name="last_name")
+	@NotNull(message="is required")
+	@Size(min=1, message="is required")
 	private String lastName;
 
 	@Column(name = "day_of_birth")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dayOfBirth;
-
+	
+	@Column(name="address")
 	@NotNull(message="is required")
 	@Size(min=1, message="is required")
-	@Column(name="address")
 	private String address;
 
+	@Column(name="phone")
 	@NotNull(message="is required")
 	@Size(min=1, message="is required")
-	@Column(name="phone")
 	private String phone;
 
+	@Column(name="email")
 	@NotNull(message="is required")
 	@Size(min=1, message="is required")
-	@Column(name="email")
 	private String email;
 
 	@OneToMany(fetch=FetchType.LAZY,
