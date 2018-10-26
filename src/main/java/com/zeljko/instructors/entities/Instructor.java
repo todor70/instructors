@@ -12,20 +12,6 @@ import java.util.List;
 @Table(name="instructor")
 public class Instructor {
 
-	// annotate the class as an entity and map to db table
-	
-	// define the fields
-	
-	// annotate the fields with db column names
-	
-	// ** set up mapping to InstructorDetail entity
-	
-	// create constructors
-	
-	// generate getter/setter methods
-	
-	// generate toString() method
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="instructor_ID")

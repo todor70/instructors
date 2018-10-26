@@ -47,9 +47,6 @@ public class UsersController {
         ModelAndView model = new ModelAndView();
 
         Users users = usersService.getUsersById(id);
-
-
-
         model.addObject("usersForm", users);
         model.setViewName("users_form");
 

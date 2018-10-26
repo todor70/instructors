@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 @Aspect
 @Component
-public class CRMLoggingAspect {
+public class InstructorsAspect {
 
 	// setup logger
 	private Logger myLogger = Logger.getLogger(getClass().getName());
@@ -49,8 +49,6 @@ public class CRMLoggingAspect {
 		}
 		
 	}
-	
-	
 	// add @AfterReturning advice
 	@AfterReturning(
 			pointcut="forAppFlow()",

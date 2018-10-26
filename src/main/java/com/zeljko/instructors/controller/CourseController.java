@@ -47,7 +47,6 @@ public class CourseController {
         Course course = new Course();
 
         List<Instructor> instructorList = instructorService.getAllInstructors();
-
         model.addObject("instructorList", instructorList);
 
         model.addObject("courseAddForm", course);
@@ -63,7 +62,6 @@ public class CourseController {
         Course course = courseService.getCourseById(id);
 
         List<Instructor> instructorList = instructorService.getAllInstructors();
-
         model.addObject("instructorList", instructorList);
 
         model.addObject("courseUpdateForm", course);
@@ -74,21 +72,20 @@ public class CourseController {
 
     @RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
     public ModelAndView save(@Valid @ModelAttribute("courseAddForm") Course course,
-    		BindingResult theBindingResult) {
-    	
-    	if (theBindingResult.hasErrors()) {
-    		 ModelAndView model = new ModelAndView();
-    	
+                             BindingResult theBindingResult) {
 
-    	        List<Instructor> instructorList = instructorService.getAllInstructors();
+        if (theBindingResult.hasErrors()) {
+            ModelAndView model = new ModelAndView();
 
-    	        model.addObject("instructorList", instructorList);
 
-    	        model.addObject("courseAddForm", course);
-    	        model.setViewName("course_add_form");
+            List<Instructor> instructorList = instructorService.getAllInstructors();
+            model.addObject("instructorList", instructorList);
 
-    	        return model;
-		}
+            model.addObject("courseAddForm", course);
+            model.setViewName("course_add_form");
+
+            return model;
+        }
 
         logger.info("Creating Course : {}", course);
 
@@ -113,8 +110,8 @@ public class CourseController {
 
     @RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable("id") int id) {
-    	
-    	courseService.deleteCourse(id);
+
+        courseService.deleteCourse(id);
         return new ModelAndView("redirect:/course/list");
     }
 

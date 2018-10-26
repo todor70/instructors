@@ -43,7 +43,7 @@ public class RegistrationController {
 
 		theModel.addAttribute("users", new Users());
 
-		return "registration-form";
+		return "registration_form";
 
 	}
 	
@@ -52,7 +52,7 @@ public class RegistrationController {
 
 		theModel.addAttribute("users", new Users());
 
-		return "delete-form";
+		return "delete_form";
 
 	}
 
@@ -72,7 +72,7 @@ public class RegistrationController {
 
 			logger.warning("User name/password can not be empty.");
 
-			return "registration-form";
+			return "registration_form";
 		}
 
 		// check the database if user already exists
@@ -84,13 +84,9 @@ public class RegistrationController {
 
 			logger.warning("Username already exists.");
 
-			return "registration-form";
+			return "registration_form";
 		}
 
-		//
-		// whew ... we passed all of the validation checks!
-		// let's get down to business!!!
-		//
 
 		// encrypt the password
 		String encodedPassword = passwordEncoder.encode(theUsers.getPassword());
@@ -109,7 +105,7 @@ public class RegistrationController {
 
 		logger.info("Successfully created user: " + username);
 
-		return "registration-confirmation";
+		return "registration_confirmation";
 	}
 	
 	@PostMapping("/processDeleteForm")
@@ -128,7 +124,7 @@ public class RegistrationController {
 
 			logger.warning("User name/password can not be empty.");
 
-			return "delete-form";
+			return "delete_form";
 		}
 
 		// check the database if user already exists
@@ -140,32 +136,14 @@ public class RegistrationController {
 
 			logger.warning("User does not exist.");
 
-			return "delete-form";
+			return "delete_form";
 		}
 
-		//
-		// whew ... we passed all of the validation checks!
-		// let's get down to business!!!
-		//
-
-		/*// encrypt the password
-		String encodedPassword = passwordEncoder.encode(theCrmUser.getPassword());
-
-		// prepend the encoding algorithm id
-		encodedPassword = "{bcrypt}" + encodedPassword;
-
-		// give user default role of "employee"
-		List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_EMPLOYEE");
-
-		// create user object (from Spring Security framework)
-		User tempUser = new User(userName, encodedPassword, authorities);
-*/
-		// save user in the database
 		userDetailsManager.deleteUser(username);;
 
 		logger.info("Successfully deleted user: " + username);
 
-		return "delete-confirmation";
+		return "delete_confirmation";
 	}
 
 	private boolean doesUserExist(String username) {

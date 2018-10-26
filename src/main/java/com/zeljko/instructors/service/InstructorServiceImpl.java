@@ -33,7 +33,6 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public void deleteInstructor(int id) {
 
-
         instructorRepository.deleteById(id);
     }
 }

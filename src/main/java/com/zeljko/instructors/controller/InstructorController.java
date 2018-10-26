@@ -21,9 +21,6 @@ public class InstructorController {
 
 	@Autowired
 	InstructorService instructorService;
-	/*
-	 * @Autowired InstructorDetailService instructorDetailService;
-	 */
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
@@ -41,12 +38,6 @@ public class InstructorController {
 
 		Instructor instructor = new Instructor();
 
-		/*
-		 * List<InstructorDetail> instructorDetailList =
-		 * instructorDetailService.getAllInstructorDetails();
-		 * 
-		 * model.addObject("instructorDetailList", instructorDetailList);
-		 */
 		model.addObject("instructorForm", instructor);
 		model.setViewName("instructor_form");
 
@@ -59,12 +50,6 @@ public class InstructorController {
 
 		Instructor instructor = instructorService.getInstructorById(id);
 
-		/*
-		 * List<InstructorDetail> instructorDetailList =
-		 * instructorDetailService.getAllInstructorDetails();
-		 * 
-		 * model.addObject("instructorDetailList", instructorDetailList);
-		 */
 		model.addObject("instructorForm", instructor);
 		model.setViewName("instructor_form");
 
