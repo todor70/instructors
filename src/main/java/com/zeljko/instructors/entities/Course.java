@@ -38,12 +38,6 @@ public class Course {
 		
 	}
 
-	public Course(String title, LocalDate start, LocalDate end) {
-		this.title = title;
-		this.start = start;
-		this.end = end;
-	}
-
 	public int getCourseID() {
 		return courseID;
 	}

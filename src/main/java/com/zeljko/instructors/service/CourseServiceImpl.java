@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class CourseServiceImpl implements CourseService {
 
+    private CourseRepository courseRepository;
+
     @Autowired
-    CourseRepository courseRepository;
+    public CourseServiceImpl(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     @Override
     public List<Course> getAllCourses() {

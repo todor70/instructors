@@ -35,11 +35,6 @@ public class Users {
     public Users() {
     }
 
-    public Users(String username, String password, Boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-    }
 
     public int getUsersID() {
         return usersID;

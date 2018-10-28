@@ -7,12 +7,11 @@ import com.zeljko.instructors.service.InstructorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -23,12 +22,41 @@ import javax.validation.Valid;
 @RequestMapping(value = "/course")
 public class CourseController {
 
-    public static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+    // add an initbinder ... to convert trim input strings
+    // remove leading and trailing whitespace
+    // resolve issue for our validation
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
+
+    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+
+    private CourseService courseService;
+    private InstructorService instructorService;
 
     @Autowired
-    CourseService courseService;
+    public CourseController(CourseService courseService, InstructorService instructorService) {
+        this.courseService = courseService;
+        this.instructorService = instructorService;
+    }
+
+    /* @Autowired
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+
+    private InstructorService instructorService;
     @Autowired
-    InstructorService instructorService;
+    public CourseController(InstructorService instructorService) {
+        this.instructorService = instructorService;
+    }*/
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {

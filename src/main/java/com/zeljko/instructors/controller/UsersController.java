@@ -16,9 +16,12 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UsersController {
 
-    @Autowired
-    UsersService usersService;
+    private UsersService usersService;
 
+    @Autowired
+    public UsersController(UsersService usersService) {
+        this.usersService = usersService;
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {

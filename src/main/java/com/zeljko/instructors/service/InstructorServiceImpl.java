@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional
 public class InstructorServiceImpl implements InstructorService {
 
+    private InstructorRepository instructorRepository;
+
     @Autowired
-    InstructorRepository instructorRepository;
+    public InstructorServiceImpl(InstructorRepository instructorRepository) {
+        this.instructorRepository = instructorRepository;
+    }
 
     @Override
     public List<Instructor> getAllInstructors() {

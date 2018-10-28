@@ -23,8 +23,12 @@ import java.util.logging.Logger;
 @RequestMapping("/register")
 public class RegistrationController {
 
-	@Autowired
 	private UserDetailsManager userDetailsManager;
+
+	@Autowired
+	public RegistrationController(UserDetailsManager userDetailsManager) {
+		this.userDetailsManager = userDetailsManager;
+	}
 
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
