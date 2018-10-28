@@ -37,7 +37,7 @@ public class InstructorController {
 		this.instructorService = instructorService;
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@GetMapping(value = "/list")
 	public ModelAndView list() {
 		ModelAndView model = new ModelAndView("instructor_list");
 		List<Instructor> instructorList = instructorService.getAllInstructors();
@@ -47,7 +47,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@RequestMapping(value = "/addInstructor/", method = RequestMethod.GET)
+	@GetMapping(value = "/addInstructor/")
 	public ModelAndView addInstructor() {
 		ModelAndView model = new ModelAndView();
 
@@ -59,7 +59,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@RequestMapping(value = "/updateInstructor/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/updateInstructor/{id}")
 	public ModelAndView editInstructor(@PathVariable int id) {
 		ModelAndView model = new ModelAndView();
 
@@ -71,7 +71,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@RequestMapping(value = "/saveInstructor", method = RequestMethod.POST)
+	@PostMapping(value = "/saveInstructor")
 	public ModelAndView save(@Valid @ModelAttribute("instructorForm") Instructor instructor,
 			BindingResult theBindingResult) {
 
@@ -85,7 +85,7 @@ public class InstructorController {
 
 	}
 
-	@RequestMapping(value = "/deleteInstructor/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/deleteInstructor/{id}")
 	public ModelAndView delete(@PathVariable("id") int id) {
 
 		instructorService.deleteInstructor(id);

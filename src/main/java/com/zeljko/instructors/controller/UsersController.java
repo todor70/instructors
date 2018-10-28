@@ -4,10 +4,7 @@ import com.zeljko.instructors.entities.Users;
 import com.zeljko.instructors.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -23,7 +20,7 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping(value = "/list")
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("users_list");
         List<Users> usersList = usersService.getAllUsers();
@@ -33,7 +30,7 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/addUsers/", method = RequestMethod.GET)
+    @GetMapping(value = "/addUsers/")
     public ModelAndView addUsers() {
         ModelAndView model = new ModelAndView();
 
@@ -45,7 +42,7 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/updateUsers/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/updateUsers/{id}")
     public ModelAndView editUsers(@PathVariable int id) {
         ModelAndView model = new ModelAndView();
 
@@ -56,14 +53,14 @@ public class UsersController {
         return model;
     }
 
-    @RequestMapping(value = "/saveUsers", method = RequestMethod.POST)
+    @PostMapping(value = "/saveUsers")
     public ModelAndView save(@ModelAttribute("usersForm") Users users) {
         usersService.saveOrUpdate(users);
 
         return new ModelAndView("redirect:/users/list");
     }
 
-    @RequestMapping(value = "/deleteUsers/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/deleteUsers/{id}")
     public ModelAndView delete(@PathVariable("id") int id) {
         usersService.deleteUsers(id);
 

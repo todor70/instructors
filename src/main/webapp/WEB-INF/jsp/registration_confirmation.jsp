@@ -20,7 +20,7 @@
 
 <body>
 
-	<h2>User registered successfully!</h2>
+	<h2>User  ${users.username } registered successfully!</h2>
 	
 	<hr>
 	

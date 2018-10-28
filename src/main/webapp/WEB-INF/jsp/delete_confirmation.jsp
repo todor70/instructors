@@ -20,7 +20,7 @@
 
 <body>
 
-<h2>User deleted successfully!</h2>
+<h2>User  ${users.username } deleted successfully!</h2>
 
 <hr>
 

@@ -34,7 +34,6 @@ public class CourseController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
-
     private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
 
     private CourseService courseService;
@@ -46,19 +45,7 @@ public class CourseController {
         this.instructorService = instructorService;
     }
 
-    /* @Autowired
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
-    }
-
-
-    private InstructorService instructorService;
-    @Autowired
-    public CourseController(InstructorService instructorService) {
-        this.instructorService = instructorService;
-    }*/
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping(value = "/list")
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("course_list");
         List<Course> courseList = courseService.getAllCourses();
@@ -68,7 +55,7 @@ public class CourseController {
         return model;
     }
 
-    @RequestMapping(value = "/addCourse/", method = RequestMethod.GET)
+    @GetMapping(value = "/addCourse/")
     public ModelAndView addCourse() {
         ModelAndView model = new ModelAndView();
 
@@ -83,7 +70,7 @@ public class CourseController {
         return model;
     }
 
-    @RequestMapping(value = "/editCourse/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/editCourse/{id}")
     public ModelAndView editCourse(@PathVariable int id) {
         ModelAndView model = new ModelAndView();
 
@@ -98,7 +85,7 @@ public class CourseController {
         return model;
     }
 
-    @RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
+    @PostMapping(value = "/saveCourse")
     public ModelAndView save(@Valid @ModelAttribute("courseAddForm") Course course,
                              BindingResult theBindingResult) {
 
@@ -128,7 +115,7 @@ public class CourseController {
         return new ModelAndView("redirect:/course/list");
     }
 
-    @RequestMapping(value = "/updateCourse", method = RequestMethod.POST)
+    @PostMapping(value = "/updateCourse")
     public ModelAndView update(@ModelAttribute("courseUpdateForm") Course course) {
 
         courseService.saveOrUpdate(course);
@@ -136,7 +123,7 @@ public class CourseController {
         return new ModelAndView("redirect:/course/list");
     }
 
-    @RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/deleteCourse/{id}")
     public ModelAndView delete(@PathVariable("id") int id) {
 
         courseService.deleteCourse(id);
