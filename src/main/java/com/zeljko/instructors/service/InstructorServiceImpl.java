@@ -1,5 +1,6 @@
 package com.zeljko.instructors.service;
 
+import com.zeljko.instructors.entities.Course;
 import com.zeljko.instructors.entities.Instructor;
 import com.zeljko.instructors.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,10 @@ public class InstructorServiceImpl implements InstructorService {
     public void deleteInstructor(int id) {
 
         instructorRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Course> getCoursesByInstructorID(int id) {
+        return (List<Course>) instructorRepository.findCoursesByInstructorID(id).getCourses();
     }
 }

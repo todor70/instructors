@@ -28,7 +28,7 @@
     <br>
     <div>
         <a href="${pageContext.request.contextPath}/instructor/list" class="btn btn-primary">Instructor List</a>
-        <a href="${pageContext.request.contextPath}/course/list" class="btn btn-primary">Cours List</a>
+        <a href="${pageContext.request.contextPath}/course/list" class="btn btn-primary">Course List</a>
         <a href="${pageContext.request.contextPath}/users/list" class="btn btn-primary">User List</a>
     </div>
 

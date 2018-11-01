@@ -14,4 +14,6 @@ public interface InstructorService {
 
     public void deleteInstructor(int Id);
 
+    public List<Course> getCoursesByInstructorID(int Id);
+
 }

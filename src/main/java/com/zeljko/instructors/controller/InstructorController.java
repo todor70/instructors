@@ -1,10 +1,12 @@
 package com.zeljko.instructors.controller;
 
+import com.zeljko.instructors.entities.Course;
 import com.zeljko.instructors.entities.Instructor;
 import com.zeljko.instructors.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +49,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@GetMapping(value = "/addInstructor/")
+	@GetMapping(value = "/addInstructor")
 	public ModelAndView addInstructor() {
 		ModelAndView model = new ModelAndView();
 
@@ -92,5 +94,21 @@ public class InstructorController {
 
 		return new ModelAndView("redirect:/instructor/list");
 	}
+
+
+	@GetMapping(value = "/instructorInfo/{id}")
+	public ModelAndView instructorInfo(@PathVariable("id") int id){
+
+		ModelAndView model = new ModelAndView();
+
+		Instructor instructor = instructorService.getInstructorById(id);
+		List<Course> courseList = instructorService.getCoursesByInstructorID(id);
+		model.addObject("courseList", courseList);
+		model.addObject("instructor", instructor);
+		model.setViewName("instructor_info");
+
+		return model;
+	}
+
 
 }

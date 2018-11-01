@@ -23,7 +23,9 @@
 
 <body>
 
-<h2>Course ${course.title } already exists!!!</h2>
+
+
+<h2>Course <span style="color:blue;font-weight:bold">${course.title }</span> already exists!!!</h2>
 
 
 <hr>

@@ -34,6 +34,8 @@
             <th>Address</th>
             <th>Phone</th>
             <th>Email</th>
+            <th>Courses</th>
+
             <security:authorize access="hasRole('ADMIN')">
 
                 <th>Update</th>
@@ -53,7 +55,14 @@
                 <td>${instructor.phone }</td>
                 <td>${instructor.email }</td>
 
+                <td><spring:url
+                        value="/instructor/instructorInfo/${instructor.instructorID }"
+                        var="updateURL"/> <a class="btn btn-primary"
+                                             href="${updateURL }">Courses</a></td>
+
                 <security:authorize access="hasRole('ADMIN')">
+
+
 
                     <td><spring:url
                             value="/instructor/updateInstructor/${instructor.instructorID }"
@@ -64,6 +73,7 @@
                             var="deleteURL"/> <a class="btn btn-primary"
                                                  href="${deleteURL }"
                                                  onclick="if (!(confirm('Are you sure you want to delete this instructor?'))) return false">Delete</a></td>
+
 
                 </security:authorize>
             </tr>

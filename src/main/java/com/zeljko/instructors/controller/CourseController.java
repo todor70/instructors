@@ -57,7 +57,7 @@ public class CourseController {
 
     @GetMapping(value = "/addCourse/")
     public ModelAndView addCourse() {
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("course_add_form");
 
         Course course = new Course();
 
@@ -65,7 +65,7 @@ public class CourseController {
         model.addObject("instructorList", instructorList);
 
         model.addObject("courseAddForm", course);
-        model.setViewName("course_add_form");
+        //model.setViewName("course_add_form");
 
         return model;
     }
