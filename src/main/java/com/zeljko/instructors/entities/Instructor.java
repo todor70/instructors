@@ -46,7 +46,7 @@ public class Instructor {
 	@Size(min=1, message="is required")
 	private String email;
 
-	@OneToMany(fetch=FetchType.LAZY,
+	@OneToMany(fetch=FetchType.EAGER,
 			mappedBy="instructor",
 			cascade= {CascadeType.REMOVE, CascadeType.MERGE,
 					CascadeType.DETACH, CascadeType.REFRESH})
