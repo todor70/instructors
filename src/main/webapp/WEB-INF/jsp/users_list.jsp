@@ -25,7 +25,7 @@
             <th>ID</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Enabled</th>
+           <%-- <th>Enabled</th>--%>
            <%-- <th>Update</th>
             <th>Delete</th>--%>
         </tr>
@@ -36,7 +36,7 @@
                 <td>${users.usersID }</td>
                 <td>${users.username }</td>
                 <td>${users.password }</td>
-                <td>${users.enabled }</td>
+            <%--    <td>${users.enabled }</td>--%>
             </tr>
         </c:forEach>
         </tbody>

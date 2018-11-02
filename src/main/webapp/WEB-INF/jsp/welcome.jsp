@@ -20,7 +20,7 @@
         <h1>Instructors and Courses</h1>
         <h2>Welcome to Home Page</h2>
         <h3>User:
-            <security:authentication property="principal.username"/>
+            <span style="color:blue"><security:authentication property="principal.username"/></span>
             , Role:
             <security:authentication property="principal.authorities"/></h3>
     </div>
