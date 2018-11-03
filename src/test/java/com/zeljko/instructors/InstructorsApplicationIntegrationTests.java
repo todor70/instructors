@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -38,8 +39,8 @@ public class InstructorsApplicationIntegrationTests {
 	public void testFindCourseById() {
 		Optional<Course> course = courseRepository.findById(1);
 		assertEquals("java", course.get().getTitle());
-		assertEquals("2016-06-09", course.get().getStart().toString());
-		assertEquals("2017-02-24", course.get().getEnd().toString());
+		assertEquals("2016-10-19", course.get().getStart().toString());
+		assertEquals("2017-11-24", course.get().getEnd().toString());
 		assertEquals("jovana", course.get().getInstructor().getFirstName());
 	}
 
