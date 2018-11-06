@@ -79,7 +79,7 @@
 						<!-- Register Button -->
 						<div style="margin-top: 10px" class="form-group">
 							<div class="col-sm-6 controls">
-								<button type="submit" class="btn btn-primary">Delete</button>
+								<button type="submit" class="btn btn-danger">Delete</button>
 
 							</div>
 							<a href="${pageContext.request.contextPath}/users/list" class="btn btn-primary">Back to

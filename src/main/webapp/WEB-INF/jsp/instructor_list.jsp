@@ -57,7 +57,7 @@
 
                 <td><spring:url
                         value="/instructor/instructorInfo/${instructor.instructorID }"
-                        var="updateURL"/> <a class="btn btn-primary"
+                        var="updateURL"/> <a class="btn btn-primary btn-xs"
                                              href="${updateURL }">Courses</a></td>
 
                 <security:authorize access="hasRole('ADMIN')">
@@ -66,11 +66,11 @@
 
                     <td><spring:url
                             value="/instructor/updateInstructor/${instructor.instructorID }"
-                            var="updateURL"/> <a class="btn btn-primary"
+                            var="updateURL"/> <a class="btn btn-primary btn-xs"
                                                  href="${updateURL }">Update</a></td>
                     <td><spring:url
                             value="/instructor/deleteInstructor/${instructor.instructorID }"
-                            var="deleteURL"/> <a class="btn btn-primary"
+                            var="deleteURL"/> <a class="btn btn-danger btn-xs"
                                                  href="${deleteURL }"
                                                  onclick="if (!(confirm('Are you sure you want to delete this instructor?'))) return false">Delete</a></td>
 

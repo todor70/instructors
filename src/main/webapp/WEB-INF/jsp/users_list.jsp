@@ -47,7 +47,7 @@
 
     <div>
         <a href="${pageContext.request.contextPath}/register/showRegistrationForm" class="btn btn-primary">Register New User</a>
-        <a href="${pageContext.request.contextPath}/register/showDeleteForm" class="btn btn-primary">Delete User</a>
+        <a href="${pageContext.request.contextPath}/register/showDeleteForm" class="btn btn-danger">Delete User</a>
     </div>
 
     <br>

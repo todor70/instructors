@@ -38,7 +38,7 @@
     <form:form action="${pageContext.request.contextPath}/logout"
                method="POST">
 
-        <input type="submit" value="Logout" class="btn btn-primary" role="button" aria-pressed="true"/>
+        <input type="submit" value="Logout" class="btn btn-danger" role="button" aria-pressed="true"/>
 
     </form:form>
 

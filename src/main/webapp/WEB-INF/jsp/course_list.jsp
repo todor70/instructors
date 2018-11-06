@@ -56,11 +56,11 @@
 
                     <td><spring:url
                             value="/course/editCourse/${course.courseID }"
-                            var="updateURL"/> <a class="btn btn-primary"
+                            var="updateURL"/> <a class="btn btn-primary btn-xs"
                                                  href="${updateURL }">Update</a></td>
                     <td><spring:url
                             value="/course/deleteCourse/${course.courseID }"
-                            var="deleteURL"/> <a class="btn btn-primary"
+                            var="deleteURL"/> <a class="btn btn-danger btn-xs"
                                                  href="${deleteURL }"
                                                  onclick="if (!(confirm('Are you sure you want to delete this course?'))) return false">Delete</a></td>
 
