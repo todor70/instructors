@@ -35,7 +35,13 @@ public class Course {
 	private Instructor instructor;
 
 	public Course() {
-		
+	}
+
+	public Course(int courseID, String title, LocalDate start, LocalDate end) {
+		this.courseID = courseID;
+		this.title = title;
+		this.start = start;
+		this.end = end;
 	}
 
 	public int getCourseID() {

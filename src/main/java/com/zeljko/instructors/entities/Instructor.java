@@ -57,6 +57,16 @@ public class Instructor {
 		
 	}
 
+	public Instructor(int instructorID, String firstName, String lastName, LocalDate dayOfBirth, String address,  String phone, String email) {
+		this.instructorID = instructorID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dayOfBirth = dayOfBirth;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+	}
+
 	public int getInstructorID() {
 		return instructorID;
 	}
