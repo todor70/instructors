@@ -30,7 +30,9 @@ public class UsersController {
         return model;
     }
 
-    @GetMapping(value = "/addUsers/")
+    //Unused all below
+
+  /*  @GetMapping(value = "/addUsers/")
     public ModelAndView addUsers() {
         ModelAndView model = new ModelAndView();
 
@@ -66,5 +68,5 @@ public class UsersController {
 
         return new ModelAndView("redirect:/users/list");
     }
-
+*/
 }

@@ -10,17 +10,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<!-- Reference Bootstrap files -->
-	<link rel="stylesheet"
-		 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style>
+
+		h1 {
+			margin-top:60px;
+			text-align: center;
+			color: darkslateblue;
+			font-weight: bold;
+		}
+
+	</style>
 
 </head>
 <body>
 
+<h1>Welcome to Instructors and Courses</h1>
+
 	<div>
 
-		<div id="loginbox" style="margin-top: 150px; margin-left: 514px;"
+		<div id="loginbox" style="margin-left: 516px; margin-top: 100px"
 			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
 			
 			<div class="panel panel-info">

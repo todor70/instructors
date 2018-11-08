@@ -17,47 +17,64 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class InstructorsSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// add a reference to our security data source
+    // add a reference to our security data source
 
-	@Qualifier("dataSource")
-	@Autowired
-	private DataSource securityDataSource;
-	
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    @Qualifier("dataSource")
+    @Autowired
+    private DataSource securityDataSource;
 
-		// use jdbc authentication
-		
-		auth.jdbcAuthentication().dataSource(securityDataSource);
-		
-	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		http.authorizeRequests()
-			.antMatchers("/").hasAnyRole("USER", "ADMIN")
-			.and()
-			.formLogin()
-				.loginPage("/showMyLoginPage")
-				.loginProcessingUrl("/authenticateTheUser")
-				.permitAll()
-			.and()
-			.logout().permitAll()
-			.and()
-			.exceptionHandling().accessDeniedPage("/access_denied");
-		
-	}
-	@Bean
-	public UserDetailsManager userDetailsManager() {
+        // use jdbc authentication
 
-		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+        auth.jdbcAuthentication().dataSource(securityDataSource);
 
-		jdbcUserDetailsManager.setDataSource(securityDataSource);
+    }
 
-		return jdbcUserDetailsManager;
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests()
+                .antMatchers("/").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/course/addCourse/").hasRole("ADMIN")
+                .antMatchers("/course/saveCourse").hasRole("ADMIN")
+                .antMatchers("/course/updateCourse").hasRole("ADMIN")
+                .antMatchers("/course/deleteCourse/{id}").hasRole("ADMIN")
+                .antMatchers("/course/editCourse/{id}").hasRole("ADMIN")
+                .antMatchers("/course/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/instructor/addInstructor/").hasRole("ADMIN")
+                .antMatchers("/instructor/saveInstructor").hasRole("ADMIN")
+                .antMatchers("/instructor/updateInstructor/{id}").hasRole("ADMIN")
+                .antMatchers("/instructor/deleteInstructor/{id}").hasRole("ADMIN")
+                .antMatchers("/instructor/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/register/showRegistrationForm").hasRole("ADMIN")
+                .antMatchers("/register/showDeleteForm").hasRole("ADMIN")
+                .antMatchers("/register/processRegistrationForm").hasRole("ADMIN")
+                .antMatchers("/register/processDeleteForm").hasRole("ADMIN")
+                .antMatchers("/resources/**").permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/showMyLoginPage")
+                .loginProcessingUrl("/authenticateTheUser")
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/access_denied");
+
+    }
+
+    @Bean
+    public UserDetailsManager userDetailsManager() {
+
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+
+        jdbcUserDetailsManager.setDataSource(securityDataSource);
+
+        return jdbcUserDetailsManager;
+    }
 }
 
 

@@ -3,15 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!doctype html>
 <html>
 <head>
-
-  <style>
-.error {color:red}
-</style>
-
     <!-- Reference Bootstrap files -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,10 +16,50 @@
 
     <title>Course Add Form</title>
 
+    <style>
+        .error {
+            color: red
+        }
+        .navbar {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Instructors and Courses</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lists <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="${pageContext.request.contextPath}/instructor/list">Instructor List</a></li>
+                    <li><a href="${pageContext.request.contextPath}/course/list">Course List</a></li>
+                    <li><a href="${pageContext.request.contextPath}/users/list">User List</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><form:form action="${pageContext.request.contextPath}/logout"
+                           method="POST">
+                <input type="submit" value="Logout" class="btn btn-danger navbar-btn" role="button"
+                       aria-pressed="true"/>
+            </form:form></li>
+            <li class="navbar-text">User:
+                <span style="color:blue"><security:authentication property="principal.username"/></span>
+                , Role:
+                <security:authentication property="principal.authorities"/></li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
-    <br>
     <spring:url value="/course/saveCourse" var="saveURL"/>
     <h2>Add Course</h2>
     <form:form modelAttribute="courseAddForm" method="post"
@@ -61,15 +97,6 @@
         <br>
         <button type="submit" class="btn btn-primary">Save</button>
     </form:form>
-
-
-    <br>
-    <div>
-        <p>
-            <a href="${pageContext.request.contextPath}/course/list" class="btn btn-primary">Back
-                to List</a>
-        </p>
-    </div>
 </div>
 </body>
 </html>

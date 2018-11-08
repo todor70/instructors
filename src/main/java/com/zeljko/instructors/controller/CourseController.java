@@ -55,7 +55,7 @@ public class CourseController {
         return model;
     }
 
-    @GetMapping(value = "/addCourse/")
+    @GetMapping(value = "/addCourse")
     public ModelAndView addCourse() {
         ModelAndView model = new ModelAndView("course_add_form");
 
