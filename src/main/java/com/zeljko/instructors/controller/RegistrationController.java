@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -51,12 +52,25 @@ public class RegistrationController {
 
 	}
 	
-	@GetMapping("/showDeleteForm")
-	public String showMyLoginPage2(Model theModel) {
+	/*@GetMapping("/showDeleteForm")
+	public String showMyDeleteForm(Model theModel) {
 
 		theModel.addAttribute("users", new Users());
 
 		return "delete_form";
+
+	}*/
+
+	@GetMapping("/showDeleteForm")
+	public ModelAndView showMyDeleteForm() {
+
+		ModelAndView model = new ModelAndView();
+
+		model.addObject("users", new Users());
+
+		model.setViewName("delete_form");
+
+		return model;
 
 	}
 

@@ -36,13 +36,10 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    public void deleteInstructor(int id) {
-
-        instructorRepository.deleteById(id);
-    }
+    public void deleteInstructor(int id) { instructorRepository.deleteById(id); }
 
     @Override
     public List<Course> getCoursesByInstructorID(int id) {
-        return (List<Course>) instructorRepository.findCoursesByInstructorID(id).getCourses();
+        return  instructorRepository.findCoursesByInstructorID(id).getCourses();
     }
 }

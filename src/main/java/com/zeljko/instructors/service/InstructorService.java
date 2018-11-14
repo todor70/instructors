@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface InstructorService {
 
-    public List<Instructor> getAllInstructors();
+     List<Instructor> getAllInstructors();
 
-    public Instructor getInstructorById(int Id);
+     Instructor getInstructorById(int Id);
 
-    public void saveOrUpdate(Instructor instructor);
+     void saveOrUpdate(Instructor instructor);
 
-    public void deleteInstructor(int Id);
+     void deleteInstructor(int Id);
 
-    public List<Course> getCoursesByInstructorID(int Id);
+     List<Course> getCoursesByInstructorID(int Id);
 
 }

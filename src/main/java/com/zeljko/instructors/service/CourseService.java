@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface CourseService {
 
-    public List<Course> getAllCourses();
+     List<Course> getAllCourses();
 
-    public Course getCourseById(int Id);
+     Course getCourseById(int Id);
 
-    public void saveOrUpdate(Course course);
+     void saveOrUpdate(Course course);
 
-    public void deleteCourse(int Id);
+     void deleteCourse(int Id);
 
     boolean isCourseExist(Course course);
 

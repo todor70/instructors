@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface InstructorRepository extends CrudRepository<Instructor, Integer> {
 
     Instructor findCoursesByInstructorID(int id);
-
-
 }

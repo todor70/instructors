@@ -5,11 +5,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-
 @Entity
 @Table(name = "users")
 public class Users {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +32,6 @@ public class Users {
 
     public Users() {
     }
-
 
     public int getUsersID() {
         return usersID;

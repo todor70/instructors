@@ -52,9 +52,7 @@ public class Instructor {
 					CascadeType.DETACH, CascadeType.REFRESH})
 	private List<Course> courses;
 	
-	
 	public Instructor() {
-		
 	}
 
 	public Instructor(int instructorID, String firstName, String lastName, LocalDate dayOfBirth, String address,  String phone, String email) {

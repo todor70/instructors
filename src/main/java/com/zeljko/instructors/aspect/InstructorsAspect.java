@@ -64,12 +64,4 @@ public class InstructorsAspect {
 		myLogger.info("=====>> result: " + theResult);
 	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
