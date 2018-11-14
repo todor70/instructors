@@ -1,5 +1,5 @@
 # instructors
-Spring Boot App with security, CRUD and many to one relationship
+Spring Boot CRUD with security, many to one relationship and JSP
 
 ![](images/login.png)
 ![](images/home.png)
