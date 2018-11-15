@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+//@Transactional
 public class InstructorServiceImpl implements InstructorService {
 
     private InstructorRepository instructorRepository;
