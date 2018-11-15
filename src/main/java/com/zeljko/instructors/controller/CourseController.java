@@ -104,7 +104,7 @@ public class CourseController {
 
         logger.info("Creating Course : {}", course);
 
-        if (courseService.isCourseExist(course)) {
+        if (courseService.isCourseExists(course)) {
             logger.error("Unable to create. A Course with title {} already exist", course.getTitle());
             ModelAndView model = new ModelAndView();
             model.addObject("course", course);

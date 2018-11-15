@@ -39,7 +39,9 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.deleteById(id);
     }
 
-    public boolean isCourseExist(Course course) {
+    @Override
+    public boolean isCourseExists(Course course) {
         return courseRepository.findByTitle(course.getTitle()) != null;
     }
+
 }

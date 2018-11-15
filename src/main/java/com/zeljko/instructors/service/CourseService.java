@@ -14,6 +14,6 @@ public interface CourseService {
 
      void deleteCourse(int Id);
 
-    boolean isCourseExist(Course course);
+    boolean isCourseExists(Course course);
 
 }
