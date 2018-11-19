@@ -72,7 +72,7 @@
     <br>
     <div class="row text-center">
 
-        <img src="/images/courses.jpg" height="450" width="750">
+        <img src="/images/courses.png" height="435" width="540">
 
     </div>
 </div>
