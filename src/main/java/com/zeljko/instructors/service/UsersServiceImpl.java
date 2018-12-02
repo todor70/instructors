@@ -24,18 +24,4 @@ public class UsersServiceImpl implements UsersService {
         return (List<Users>) usersRepository.findAll();
     }
 
-    @Override
-    public Users getUsersById(int id) {
-        return usersRepository.findById(id).get();
-    }
-
-    @Override
-    public void saveOrUpdate(Users users) {
-        usersRepository.save(users);
-    }
-
-    @Override
-    public void deleteUsers(int id) {
-        usersRepository.deleteById(id);
-    }
 }

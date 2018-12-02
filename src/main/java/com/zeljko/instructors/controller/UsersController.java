@@ -30,43 +30,4 @@ public class UsersController {
         return model;
     }
 
-    //Unused all below
-
-  /*  @GetMapping(value = "/addUsers/")
-    public ModelAndView addUsers() {
-        ModelAndView model = new ModelAndView();
-
-        Users users = new Users();
-
-        model.addObject("usersForm", users);
-        model.setViewName("users_form");
-
-        return model;
-    }
-
-    @GetMapping(value = "/updateUsers/{id}")
-    public ModelAndView editUsers(@PathVariable int id) {
-        ModelAndView model = new ModelAndView();
-
-        Users users = usersService.getUsersById(id);
-        model.addObject("usersForm", users);
-        model.setViewName("users_form");
-
-        return model;
-    }
-
-    @PostMapping(value = "/saveUsers")
-    public ModelAndView save(@ModelAttribute("usersForm") Users users) {
-        usersService.saveOrUpdate(users);
-
-        return new ModelAndView("redirect:/users/list");
-    }
-
-    @GetMapping(value = "/deleteUsers/{id}")
-    public ModelAndView delete(@PathVariable("id") int id) {
-        usersService.deleteUsers(id);
-
-        return new ModelAndView("redirect:/users/list");
-    }
-*/
 }

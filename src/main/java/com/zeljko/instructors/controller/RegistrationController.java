@@ -112,7 +112,7 @@ public class RegistrationController {
 		// prepend the encoding algorithm id
 		encodedPassword = "{bcrypt}" + encodedPassword;
 
-		// give user default role of "employee"
+		// give user default role of "user"
 		List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
 
 		// create user object (from Spring Security framework)

@@ -6,30 +6,28 @@ use `instructors`;
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `users_id` INT(11) NOT NULL AUTO_INCREMENT,
   `enabled` BIT(1) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`users_id`)
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `users` 
 VALUES 
-(1,1,'zeljko','{bcrypt}$2a$10$ewdVrbKvNx0FdkdVsp.iGeQto7B5M3/.8wtbMvGOu.Y9AeSPhj2Ei');
+(1,'zeljko','{bcrypt}$2a$10$ewdVrbKvNx0FdkdVsp.iGeQto7B5M3/.8wtbMvGOu.Y9AeSPhj2Ei');
 
 DROP TABLE IF EXISTS `authorities`;
 
 CREATE TABLE `authorities` (
-  `authorities_id` INT(11) NOT NULL AUTO_INCREMENT,
   `authority` VARCHAR(255) NOT NULL,
   `username` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`authorities_id`),
-  INDEX `FKhjuy9y4fd8v5m3klig05ktofg` (`username` ASC) VISIBLE
+  UNIQUE KEY `authorities_idx_1` (`authority`,`username`),
+  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `authorities` 
 VALUES 
-(1,'ROLE_ADMIN','zeljko');
+('ROLE_ADMIN','zeljko');
 
 DROP TABLE IF EXISTS `instructor`;
 

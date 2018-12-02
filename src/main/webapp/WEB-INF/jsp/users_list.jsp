@@ -61,21 +61,15 @@
     <table class="table table-striped">
 
         <tr>
-            <th>ID</th>
             <th>Username</th>
             <th>Password</th>
-           <%-- <th>Enabled</th>--%>
-           <%-- <th>Update</th>
-            <th>Delete</th>--%>
         </tr>
 
         <tbody>
         <c:forEach items="${usersList }" var="users">
             <tr>
-                <td>${users.usersID }</td>
                 <td>${users.username }</td>
                 <td>${users.password }</td>
-            <%--    <td>${users.enabled }</td>--%>
             </tr>
         </c:forEach>
         </tbody>
@@ -91,12 +85,6 @@
 
     <br>
     </security:authorize>
-
-    <%--<div >
-        <p>
-            <a href="${pageContext.request.contextPath}/" class="btn btn-primary">Go to Home Page</a>
-        </p>
-    </div>--%>
 
 </div>
 </body>
