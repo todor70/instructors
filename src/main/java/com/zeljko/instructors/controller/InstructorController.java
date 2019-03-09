@@ -17,7 +17,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/instructor")
+@RequestMapping("/instructor")
 public class InstructorController {
 
 	// add an initbinder ... to convert trim input strings
@@ -39,7 +39,7 @@ public class InstructorController {
 		this.instructorService = instructorService;
 	}
 
-	@GetMapping(value = "/list")
+	@GetMapping("/list")
 	public ModelAndView list() {
 		ModelAndView model = new ModelAndView("instructor_list");
 		List<Instructor> instructorList = instructorService.getAllInstructors();
@@ -49,7 +49,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@GetMapping(value = "/addInstructor")
+	@GetMapping("/addInstructor")
 	public ModelAndView addInstructor() {
 		ModelAndView model = new ModelAndView();
 
@@ -61,7 +61,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@GetMapping(value = "/updateInstructor/{id}")
+	@GetMapping("/updateInstructor/{id}")
 	public ModelAndView editInstructor(@PathVariable int id) {
 		ModelAndView model = new ModelAndView();
 
@@ -73,7 +73,7 @@ public class InstructorController {
 		return model;
 	}
 
-	@PostMapping(value = "/saveInstructor")
+	@PostMapping("/saveInstructor")
 	public ModelAndView save(@Valid @ModelAttribute("instructorForm") Instructor instructor,
 			BindingResult theBindingResult) {
 
@@ -87,7 +87,7 @@ public class InstructorController {
 
 	}
 
-	@GetMapping(value = "/deleteInstructor/{id}")
+	@GetMapping("/deleteInstructor/{id}")
 	public ModelAndView delete(@PathVariable("id") int id) {
 
 		instructorService.deleteInstructor(id);
@@ -96,7 +96,7 @@ public class InstructorController {
 	}
 
 
-	@GetMapping(value = "/instructorInfo/{id}")
+	@GetMapping("/instructorInfo/{id}")
 	public ModelAndView instructorInfo(@PathVariable("id") int id){
 
 		ModelAndView model = new ModelAndView();
