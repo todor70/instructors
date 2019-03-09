@@ -19,7 +19,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/course")
+@RequestMapping("/course")
 public class CourseController {
 
     // add an initbinder ... to convert trim input strings
@@ -45,7 +45,7 @@ public class CourseController {
         this.instructorService = instructorService;
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping("/list")
     public ModelAndView list() {
         ModelAndView model = new ModelAndView("course_list");
         List<Course> courseList = courseService.getAllCourses();
@@ -55,7 +55,7 @@ public class CourseController {
         return model;
     }
 
-    @GetMapping(value = "/addCourse")
+    @GetMapping("/addCourse")
     public ModelAndView addCourse() {
         ModelAndView model = new ModelAndView("course_add_form");
 
@@ -70,13 +70,18 @@ public class CourseController {
         return model;
     }
 
-    @GetMapping(value = "/editCourse/{id}")
+    @GetMapping("/editCourse/{id}")
     public ModelAndView editCourse(@PathVariable int id) {
         ModelAndView model = new ModelAndView();
 
         Course course = courseService.getCourseById(id);
 
         List<Instructor> instructorList = instructorService.getAllInstructors();
+
+        instructorList.remove(course.getInstructor());
+
+        instructorList.add(0, course.getInstructor());
+
         model.addObject("instructorList", instructorList);
 
         model.addObject("courseUpdateForm", course);
@@ -85,7 +90,7 @@ public class CourseController {
         return model;
     }
 
-    @PostMapping(value = "/saveCourse")
+    @PostMapping("/saveCourse")
     public ModelAndView save(@Valid @ModelAttribute("courseAddForm") Course course,
                              BindingResult theBindingResult) {
 
@@ -115,7 +120,7 @@ public class CourseController {
         return new ModelAndView("redirect:/course/list");
     }
 
-    @PostMapping(value = "/updateCourse")
+    @PostMapping("/updateCourse")
     public ModelAndView update(@ModelAttribute("courseUpdateForm") Course course) {
 
         courseService.saveOrUpdate(course);
@@ -123,7 +128,7 @@ public class CourseController {
         return new ModelAndView("redirect:/course/list");
     }
 
-    @GetMapping(value = "/deleteCourse/{id}")
+    @GetMapping("/deleteCourse/{id}")
     public ModelAndView delete(@PathVariable("id") int id) {
 
         courseService.deleteCourse(id);
